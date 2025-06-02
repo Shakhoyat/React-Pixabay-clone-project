@@ -1,10 +1,10 @@
 import React from 'react'
-import Images from './components/Imgs'
+import Imgs from './components/Imgs';
 
 const App = () => {
   return (
     <>
-      <Images />
+      <Imgs />
     </>
   )
 }

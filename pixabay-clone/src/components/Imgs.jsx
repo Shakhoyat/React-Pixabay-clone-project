@@ -1,18 +1,18 @@
-import React, { useContext } from 'react'
-import PixabayContext from './PixabayContext'
+import React from 'react'
+import PixabayContext from '../context/PixabayContext'
 import { useState } from 'react'
-const Images = () => {
-    const { imgData } = useContext(PixabayContext);
+const Imgs = () => {
+    const { imgData } = React.useContext(PixabayContext);
     return (
         <div>
-            {imgData.map((image) => (
-                <div key={image.id} className="image-container">
-                    <img src={image.webformatURL} alt={image.tags} />
-                    <p>{image.tags}</p>
+            {imgData.map((img) => (
+                <div key={img.id} className="img-container">
+                    <img src={img.webformatURL} alt={img.tags} />
+                    <p>{img.tags}</p>
                 </div>
             ))}
         </div>
     )
 }
 
-export default Images
+export default Imgs
