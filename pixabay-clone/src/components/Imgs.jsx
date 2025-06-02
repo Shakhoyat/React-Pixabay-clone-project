@@ -4,7 +4,7 @@ import { useState } from 'react'
 const Imgs = () => {
     const { imgData } = React.useContext(PixabayContext);
     return (
-        <div>
+        <div className="flex">
             {imgData.map((img) => (
                 <div key={img.id} className="img-container">
                     <img src={img.webformatURL} alt={img.tags} />
