@@ -10,7 +10,9 @@ const NavBar = () => {
             <button type="button" className="btn btn-warning mx-3">Sports</button>
             <button type="button" className="btn btn-info mx-3">Food</button>
             <button type="button" className="btn btn-light mx-3">Travel</button>
-            <button type="button" className="btn btn-dark mx-3">Business</button>
+            <button type="button" className="btn btn-secondary mx-3">Business</button>
+            <button type="button" className="btn btn-danger mx-3">Food</button>
+
         </div>
     )
 }
