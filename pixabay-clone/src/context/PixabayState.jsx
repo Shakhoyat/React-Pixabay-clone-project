@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react';
 
 const PixabayState = (props) => {
     const [imgData, setimgData] = useState([]);
-
+    const [query, setQuery] = useState('london');
     const apiKey = "50640814-b8e31d536bcb1ae00eaec2858";
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`https://pixabay.com/api/?key=${apiKey}&q=yellow+flowers&image_type=photo&per_page=100`);
+                const response = await fetch(`https://pixabay.com/api/?key=${apiKey}&q=${query}&image_type=photo&per_page=100`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -19,7 +19,7 @@ const PixabayState = (props) => {
             }
         };
         fetchData();
-    }, []);
+    }, [query]);
 
     const fetchImagesbyCategory = async (category) => {
         try {
@@ -37,7 +37,8 @@ const PixabayState = (props) => {
     return (
         <PixabayContext.Provider value={{
             imgData,
-            fetchImagesbyCategory
+            fetchImagesbyCategory,
+            setQuery,
         }}>
             {props.children}
         </PixabayContext.Provider>

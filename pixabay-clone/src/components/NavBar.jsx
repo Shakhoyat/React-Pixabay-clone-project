@@ -1,11 +1,24 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import PixabayContext from '../context/PixabayContext'
 import { useContext } from 'react';
+
 const NavBar = () => {
-    const { fetchImagesbyCategory } = React.useContext(PixabayContext);
+    const { fetchImagesbyCategory, setQuery } = useContext(PixabayContext);
+    const [inputValue, setInputValue] = useState('');
+
     const handleCategoryClick = (category) => {
         fetchImagesbyCategory(category);
     };
+
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setQuery(inputValue);
+    };
+
     return (
         <>
             <div className='container text-center my-3'>
@@ -20,13 +33,15 @@ const NavBar = () => {
                 <button onClick={() => handleCategoryClick("health")} type="button" className="btn btn-danger mx-3">Health</button>
             </div>
             <div className="container d-flex justify-content-center my-4">
-                <form className="w-50">
+                <form className="w-50" onSubmit={handleSubmit}>
                     <div className="input-group input-group-md">
                         <input
                             type="text"
                             className="form-control bg-dark text-light rounded-start"
                             placeholder="Search images..."
                             aria-label="Search images"
+                            value={inputValue}
+                            onChange={handleInputChange}
                         />
                         <button className="btn btn-primary rounded-end" type="submit">
                             <i className="bi bi-search"></i> Search
